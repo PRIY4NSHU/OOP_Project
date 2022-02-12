@@ -130,7 +130,7 @@ void guess_num::play(int n1, int n2, char name1[], char name2[])
         cout<<"\n\t\t\t\t Too high...nearly 100 more than the target\n\n";
 
         else
-        cout<<"\n\t\t\t\t Nope. That was too high\n\n";
+        cout<<"\n\t\t\t\t Nope. That was a bit high\n\n";
     }
     else if(num1<n2)
     {
@@ -145,7 +145,7 @@ void guess_num::play(int n1, int n2, char name1[], char name2[])
         cout<<"\n\t\t\t\t Too low...nearly 100 less than the target\n\n";
 
         else
-        cout<<"\n\t\t\t\t Too low. Raise the number\n\n";
+        cout<<"\n\t\t\t\t A bit low. Raise the number\n\n";
     }
     //flag = game(num1, n2);
     cnt1++;
@@ -171,7 +171,7 @@ void guess_num::play(int n1, int n2, char name1[], char name2[])
         cout<<"\n\t\t\t\t Too high...nearly 100 more than the target\n\n";
 
         else
-        cout<<"\n\t\t\t\t Nope. That was too high\n\n";
+        cout<<"\n\t\t\t\t Nope. That was a bit high\n\n";
     }
     else if(num2<n1)
     {
@@ -185,7 +185,7 @@ void guess_num::play(int n1, int n2, char name1[], char name2[])
         cout<<"\n\t\t\t\t Too low...nearly 100 less than the target\n\n";
 
         else
-        cout<<"\n\t\t\t\t Too low. Raise the number\n\n";
+        cout<<"\n\t\t\t\t A bit low. Raise the number\n\n";
     }
 
     cnt2++;
