@@ -19,6 +19,7 @@ char player::set_player()
 {
 
     // system("COLOR 2");
+    SetConsoleTextAttribute(h,2);
     cout<<"\t\t\t\t Select the player mode\n\n";
     cout<<"\t\t\t\t press:\n";
     cout<<"\t\t\t\t 1 to play with computer \n \t\t\t\t 2 for two players\n";
@@ -194,16 +195,25 @@ void guess_num::play(int n1, int n2, char name1[], char name2[])
     if (flag1==1 || flag2==1)
     break;
     }
-    if(cnt1>=10)
+    if(cnt1>=10 && flag1==0 && flag2==0)
     {
     cout<<"\t\t\t\t Looks like this will go on forever...\n\t\t\t\t Let's end this round in a tie\n";
     cout<<"\t\t\t The number given by "<<name1<<" was "<<n1<<endl;
     cout<<"\t\t\t The number given by "<<name2<<" was "<<n2<<endl;
     return;
     }
-    cout<<"\n\t\t\t\t That's a correct guess!!!"<<endl;
+    else if(cnt1>=10 && flag1==1)
+    {
+    cout<<"\n\t\t\t\t THAT'S THE  CORRECT GUESS!!!"<<endl;
     cout<<"\t\t\t\t ";
     //cout<<"flag1: "<<flag1<<" flag2: "<<flag2<<"cnt1:"<<cnt1<<" cnt2: "<<cnt2<<endl;
+    }
+    else if(cnt1>=10 && flag2==1)
+     {
+    cout<<"\n\t\t\t\t THAT'S THE  CORRECT GUESS!!!"<<endl;
+    cout<<"\t\t\t\t ";
+    //cout<<"flag1: "<<flag1<<" flag2: "<<flag2<<"cnt1:"<<cnt1<<" cnt2: "<<cnt2<<endl;
+    }
     if(flag1!=flag2)
     {
         if(flag1==1)
@@ -253,6 +263,7 @@ void guess_num::game(int num)
     // system("COLOR 2");
     int guess;
     int attempt=0;
+    int flag=0;
     while(attempt<10)
     {
         cout<<"\t\t\t\t Guess: ";
@@ -266,20 +277,31 @@ void guess_num::game(int num)
            cout<<"\t\t\t\t raise the number\n";
 
       if(num==guess)
-        break;
+        {
+            flag=1;
+            break;
+        }
 
     }
-    if(attempt>10)
+    if(attempt>=10 && flag==0)
     {
-        cout<<"\n\n\t\t\t\t Better luck next time \n \t\t\t\t You took too many tries:( \n\n";
+        cout<<"\n\n\t\t\t\tBETTER LUCK NEXT TIME \n \t\t\t\t You took too many tries:( \n\n";
         cout<<"\t\t\t\t The number was "<<num<<endl;
     }
-    else
+    else if(flag==1 && attempt==10)
     {
         score1=11-attempt;
-        cout<<"\n\n\t\t\t\t CONGRATULATIONS...\n\n \t\t\t\t you won with score "<<score1;
+        cout<<"\n\n\t\t\t\t CONGRATULATIONS...\n\n \t\t\t\t YOU WON WITH SCORE\n\n "<<score1;
         cout<<"\n";
     }
+        else
+        {
+            score1=11-attempt;
+        cout<<"\n\n\t\t\t\t CONGRATULATIONS...\n\n \t\t\t\t YOU WON WITH SCORE\n\n"<<score1;
+        cout<<"\n";
+
+        }
+
 }
 //end lines
 class endd
@@ -287,13 +309,15 @@ class endd
 public:
     char print_end()
     {
-        cout<<"\t\t\t\tWould you like to play another game??\n";
-        cout<<"\n\t\t\t\t Enter N for new game  Q to quit\n";
-        cout<<"\n\n \t\t\t\t NEW GAME\n \t\t\t\t QUIT\n";
+        SetConsoleTextAttribute(h,7);
+        cout<<"\t\t\t\tWOULD YOU LIKE TO PLAY AGAIN??\n";
+        cout<<"\n\t\t\t\t ENTER N FOR NEW GAME\t Q TO QUIT\n";
+        cout<<" \t\t\t\t NEW GAME\n \t\t\t\t QUIT\n";
         char ch;
         cout<<"\n \t\t\t\t Enter your choice: ";
         cin>>ch;
         return ch;
+        SetConsoleTextAttribute(h,2);
     }
 };
 
@@ -327,7 +351,7 @@ int main()
 
            secret_number num; //secret number generation
            int number = num.setnum(chl);
-            // cout<<"under comment"<<number<<"\n";
+            //cout<<"under comment"<<number<<"\n";
 
 
            guess_num play;
@@ -444,10 +468,10 @@ int main()
            SetConsoleTextAttribute(h,15);
            cout<<"\n\n\t\t\t\t **CONGRATULATIONS**:)!!!\n\n";
            if(guess_num::score1>guess_num::score2)
-           cout<<"\t\t\t\t "<<name1<<" has won the game!!\n";
+           cout<<"\t\t\t\t "<<name1<<" HAS WON THE GAME!!\n";
            else if (guess_num::score1==guess_num::score2)
            cout<<"\t\t\t\t THAT WAS A TIE\n ";
-           else cout<<"\t\t\t\t "<<name2<<" has won the game!!\n";
+           else cout<<"\t\t\t\t "<<name2<<" HAS WON THE GAME!!\n";
            SetConsoleTextAttribute(h,2);
 
        }
